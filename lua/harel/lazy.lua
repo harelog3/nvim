@@ -16,7 +16,7 @@ if not status then
   print("lazy missing on path: " .. lazypath)
 return end
 
-lazy.setup({{import = "harel.plugins"}, {}}, {
+lazy.setup({{import = "harel.plugins"}, {import = "harel.plugins.lsp"}}, {
    install = {
   },
   checker = {

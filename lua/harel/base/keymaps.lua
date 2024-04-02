@@ -28,4 +28,7 @@ keymap.set("n", "<Tab>", ":bnext<Return>", options)
 keymap.set("n", "<S-Tab>", ":bprev<Return>", options)
 keymap.set("n", "<leader>qb", ":bdelete<Return>", options)
 
-
+-- diagnostics
+keymap.set("n", "<C-j>", function()
+	vim.diagnostic.goto_next()
+end, options)
