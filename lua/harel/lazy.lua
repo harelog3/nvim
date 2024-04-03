@@ -31,4 +31,5 @@ lazy.setup({ { import = "harel.plugins" }, { import = "harel.plugins.lsp" } }, {
 })
 
 -- colorscheme
-vim.cmd("colorscheme catppuccin-mocha")
+local colorscheme = "tokyonight" -- set this as the colorscheme you want (make sure it comes installed)
+vim.cmd("colorscheme " .. colorscheme)
