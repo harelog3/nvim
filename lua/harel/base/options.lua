@@ -33,6 +33,8 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
 
+vim.opt.cursorline = true
+
 vim.api.nvim_exec("language en_US", true)
 
 -- Undercurl
