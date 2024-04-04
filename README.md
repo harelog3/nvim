@@ -1,6 +1,7 @@
 # Neovim configuration 💻
 
 This is my neovim configuration files, i took inspiration on the dotfiles of `craftzdog` and `josean martinez` for the development of this files🤠
+![Neovim config screenshot](./img/ss.png)
 
 ## Installation
 
