@@ -18,9 +18,7 @@ if not status then
 end
 
 lazy.setup({ { import = "harel.plugins" }, { import = "harel.plugins.lsp" } }, {
-	install = {
-		colorscheme = { "catppuccin-mocha" },
-	},
+	install = {},
 	checker = {
 		enabled = true,
 		notify = false,
@@ -31,5 +29,5 @@ lazy.setup({ { import = "harel.plugins" }, { import = "harel.plugins.lsp" } }, {
 })
 
 -- colorscheme
-local colorscheme = "tokyonight" -- set this as the colorscheme you want (make sure it comes installed)
+local colorscheme = "catppuccin-mocha" -- set this as the colorscheme you want (make sure it comes installed)
 vim.cmd("colorscheme " .. colorscheme)

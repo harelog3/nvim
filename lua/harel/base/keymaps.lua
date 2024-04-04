@@ -1,15 +1,14 @@
 local keymap = vim.keymap
 local options = { noremap = true, silent = true }
 
-
 vim.g.mapleader = " "
 
 -- Open file explorer
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Clipboard handler
-keymap.set({"n", "v"}, "<leader>y", '"+y', options)
-keymap.set({"n", "v"}, "<leader>p", '"+p', options)
+keymap.set({ "n", "v" }, "<leader>y", '"+y', options)
+keymap.set({ "n", "v" }, "<leader>p", '"+p', options)
 
 -- write file
 keymap.set("n", "<leader>w", vim.cmd.write)
@@ -31,4 +30,8 @@ keymap.set("n", "<leader>qb", ":bdelete<Return>", options)
 -- diagnostics
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
+end, options)
+
+keymap.set("n", "<C-k>", function()
+	vim.diagnostic.goto_prev()
 end, options)

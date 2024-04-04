@@ -6,6 +6,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"nvim-tree/nvim-web-devicons",
+			"folke/todo-comments.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -33,8 +34,9 @@ return {
 			vim.keymap.set("n", "<leader>ts", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>tg", builtin.git_files, {})
 			vim.keymap.set("n", "<space>tu", ":Telescope file_browser<CR>")
-			-- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+			vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
 			-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+			vim.keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<CR>")
 		end,
 	},
 	{

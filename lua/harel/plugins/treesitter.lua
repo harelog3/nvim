@@ -41,6 +41,9 @@ return {
 					"json",
 				},
 			})
+
+			-- read handlebars as html
+			vim.cmd("autocmd BufRead,BufNewFile *.handlebars set filetype=html")
 		end,
 	},
 }
