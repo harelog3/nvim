@@ -23,8 +23,8 @@ return {
 		})
 
 		-- keymaps
-		vim.keymap.set("n", "<C-t>", ":ToggleTerm<Return>", { noremap = true, silent = true }) -- open terminal on normal mode
-		vim.keymap.set("t", "<C-t>", "<C-\\><C-n><C-w>l", { noremap = true, silent = true }) -- hide terminal
+		vim.keymap.set("n", "<leader>ot", ":ToggleTerm<Return>", { noremap = true, silent = true }) -- open terminal on normal mode
+		vim.keymap.set("t", "<esc>", "<C-\\><C-n><C-w>l", { noremap = true, silent = true }) -- hide terminal
 
 		-- always open on insert
 		vim.cmd("autocmd BufEnter * if &buftype ==# 'terminal' | startinsert! | endif")
