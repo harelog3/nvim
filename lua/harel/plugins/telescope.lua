@@ -33,7 +33,7 @@ return {
 			vim.keymap.set("n", "<leader>th", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>ts", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>tg", builtin.git_files, {})
-			vim.keymap.set("n", "<space>tu", ":Telescope file_browser<CR>")
+			vim.keymap.set("n", "<space>tu", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 			vim.keymap.set("n", "<leader>tb", builtin.buffers, {})
 			-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 			vim.keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<CR>")
