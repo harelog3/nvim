@@ -3,5 +3,8 @@ return {
 	main = "ibl",
 	opts = {
 		indent = { char = "┊" },
+		exclude = {
+			filetypes = { "dashboard", "alpha" },
+		},
 	},
 }
