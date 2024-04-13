@@ -38,6 +38,7 @@ return {
 				"emmet-ls",
 				"json-lsp",
 				"markdownlint",
+				"gopls",
 			},
 		})
 	end,
