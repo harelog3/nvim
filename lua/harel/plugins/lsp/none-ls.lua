@@ -11,7 +11,7 @@ return {
         null_ls.builtins.formatting.isort,
 
         -- linters and diagnostics
-        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.formatting.eslint_d
       },
     })
   end,
