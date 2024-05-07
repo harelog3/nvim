@@ -1,5 +1,8 @@
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim"
+  },
   config = function()
     local null_ls = require("null-ls")
     null_ls.setup({
@@ -11,7 +14,7 @@ return {
         null_ls.builtins.formatting.isort,
 
         -- linters and diagnostics
-        null_ls.builtins.formatting.eslint_d
+        require("none-ls.diagnostics.eslint_d"),
       },
     })
   end,
