@@ -29,5 +29,7 @@ lazy.setup({ { import = "harel.plugins" }, { import = "harel.plugins.lsp" } }, {
 })
 
 -- colorscheme
-local colorscheme = "tokyonight-night" -- set this as the colorscheme you want (make sure it comes installed)
+local tokyo_dark = "tokyodark"
+local tokyo_night_night = "tokyonight-night"
+local colorscheme = tokyo_dark -- set this as the colorscheme you want (make sure it comes installed)
 vim.cmd("colorscheme " .. colorscheme)
