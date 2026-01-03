@@ -23,13 +23,10 @@ keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-l>", "<C-w>l")
 
 -- buffer management (possibly in a future i move to tabs)
-keymap.set("n", "<Tab>", ":bnext<Return>", opts)
-keymap.set("n", "<S-Tab>", ":bprev<Return>", opts)
+-- keymap.set("n", "<Tab>", ":bnext<Return>", opts)
+-- keymap.set("n", "<S-Tab>", ":bprev<Return>", opts)
 keymap.set("n", "<leader>qb", ":bdelete<Return>", opts)
 
--- indentation 
+-- indentation
 keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
-
-
-
