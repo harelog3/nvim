@@ -68,6 +68,12 @@ vim.lsp.config("ts_ls", {
 -- vue lsp config
 vim.lsp.config("vue_ls", {})
 
+-- roslyn lsp config
+vim.lsp.config("roslyn", {})
+
+-- svelte lsp config
+vim.lsp.config("svelte", {})
+
 -- when the lsp is attached to buffer
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)

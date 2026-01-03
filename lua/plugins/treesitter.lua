@@ -1,28 +1,55 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  build = ':TSUpdate',
+	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	build = ":TSUpdate",
 
-  config = function()
-    local ts = require("nvim-treesitter")
-    
-    local must_parsers = {
-        -- core
-        "lua", "vim", "vimdoc", "query",
+	config = function()
+		local ts = require("nvim-treesitter")
 
-        -- web technologies
-        "html", "css", "javascript", "typescript", "tsx", "jsx", "angular", "vue"; "svelte", "astro", "angular",
+		local must_parsers = {
+			-- core
+			"lua",
+			"vim",
+			"vimdoc",
+			"query",
 
-        -- backend and infra langs
-        "go", "python", "rust", "c", "c_sharp",
+			-- web technologies
+			"html",
+			"css",
+			"javascript",
+			"typescript",
+			"tsx",
+			"jsx",
+			"angular",
+			"vue",
+			"svelte",
+			"astro",
+			"angular",
 
-        -- markup and data
-        "yaml", "markdown", "markdown_inline", "toml", "json",
+			-- backend and infra langs
+			"go",
+			"python",
+			"rust",
+			"c",
+			"c_sharp",
 
-        -- tooling
-        "bash", "fish", "dockerfile",  "gitignore", "diff", "make"
-    }
+			-- markup and data
+			"yaml",
+			"markdown",
+			"markdown_inline",
+			"toml",
+			"json",
 
-    ts.install(must_parsers)
-  end,
+			-- tooling
+			"bash",
+			"fish",
+			"dockerfile",
+			"gitignore",
+			"diff",
+			"make",
+			"http",
+		}
+
+		ts.install(must_parsers)
+	end,
 }

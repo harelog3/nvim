@@ -20,7 +20,7 @@ return {
 		require("mini.pairs").setup()
 
 		-- tabline
-		require("mini.tabline").setup()
+		-- require("mini.tabline").setup()
 
 		-- surround
 		require("mini.surround").setup({
@@ -56,13 +56,31 @@ return {
 				move_start = "<C-g>",
 				move_up = "<C-k>",
 			},
+			opts = {
+				pick = {
+					exclude = {
+						"node_modules",
+						"%.*/node_modules",
+						"build",
+						"dist",
+						".*",
+					},
+				},
+			},
 		})
+
 		vim.keymap.set("n", "<leader>th", function()
 			MiniPick.builtin.files()
 		end, { noremap = true, silent = true }) -- open file finder
+
+		vim.keymap.set("n", "<leader>tc", function()
+			MiniPick.builtin.files({ cwd = vim.fn.stdpath("config") })
+		end, { noremap = true, silent = true }) -- open file finder for configs
+
 		vim.keymap.set("n", "<leader>tb", function()
 			MiniPick.builtin.buffers()
 		end, { noremap = true, silent = true }) -- open buffer finder
+
 		vim.keymap.set("n", "<leader>ts", function()
 			MiniPick.builtin.grep_live()
 		end, { noremap = true, silent = true }) -- open find by text

@@ -6,7 +6,7 @@ return {
 	config = function()
 		local colorscheme = require("catppuccin")
 		colorscheme.setup({
-			flavour = "latte",
+			flavour = "mocha",
 			transparent_background = true, -- disables setting the background color.
 		})
 

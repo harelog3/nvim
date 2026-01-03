@@ -1,4 +1,4 @@
-opt = vim.opt
+local opt = vim.opt
 
 -- numbers
 opt.number = true
@@ -22,6 +22,8 @@ opt.cursorline = true
 
 opt.background = "dark"
 opt.signcolumn = "yes"
+
+opt.winborder = "rounded"
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })

@@ -11,6 +11,11 @@ return {
 						package_uninstalled = "✗",
 					},
 				},
+				-- roslyn
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+				},
 			},
 		},
 
