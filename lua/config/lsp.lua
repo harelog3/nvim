@@ -27,6 +27,7 @@ vim.lsp.enable({
 	"ts_ls",
 	"vue_ls",
 	"angularls",
+	"svelte",
 	"gopls",
 	"clangd",
 	"html",
@@ -73,6 +74,9 @@ vim.lsp.config("roslyn", {})
 
 -- svelte lsp config
 vim.lsp.config("svelte", {})
+
+-- python lsp config
+vim.lsp.config("pylsp", {})
 
 -- when the lsp is attached to buffer
 vim.api.nvim_create_autocmd("LspAttach", {

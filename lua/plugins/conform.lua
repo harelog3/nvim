@@ -1,4 +1,4 @@
-local web_projects_options = { "prettier", "biome", "prettierd", stop_after_first = true }
+local web_projects_options = { "prettierd", "biome", "prettier", stop_after_first = true }
 
 return {
 	"stevearc/conform.nvim",
@@ -21,7 +21,7 @@ return {
 			c_sharp = { "csharpier" },
 		},
 		format_on_save = {
-			timeout_ms = 300,
+			timeout_ms = 500,
 			lsp_format = "fallback",
 		},
 	},
