@@ -25,6 +25,7 @@ vim.lsp.config("*", {
 
 -- enable lsps
 vim.lsp.enable({
+    -- languages
     "lua_ls",
     "ts_ls",
     "svelte",
@@ -35,6 +36,11 @@ vim.lsp.enable({
     "tailwindcss",
     "emmet_ls",
     "cssls",
+
+    -- linters
+    "eslint",
+    "oxlint",
+    "biome"
 })
 
 -- ============ CONFIGURATIONS =================
@@ -66,6 +72,27 @@ vim.lsp.config("ts_ls", {
     init_options = {
         plugins = { vue_plugin },
     },
+})
+
+-- eslint configuration
+vim.lsp.config("eslint", {
+    cmd = { "vscode-eslint-language-server", "--stdio" },
+    root_markers = {
+        "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs",
+        ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml",
+    },
+})
+
+-- biome configuration
+vim.lsp.config("biome", {
+    cmd = { "biome", "lsp-proxy" },
+    root_markers = { "biome.json", "biome.jsonc" },
+})
+
+-- oxlint config
+vim.lsp.config("oxlint", {
+    cmd = { "oxlint", "--lsp" },
+    root_markers = { ".oxlintrc.json" },
 })
 
 
