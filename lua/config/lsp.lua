@@ -28,6 +28,7 @@ vim.lsp.enable({
     -- languages
     "lua_ls",
     "ts_ls",
+    "pylsp",
     "svelte",
     "vue_ls",
     "gopls",
@@ -36,11 +37,15 @@ vim.lsp.enable({
     "tailwindcss",
     "emmet_ls",
     "cssls",
+    "jsonls",
 
     -- linters
     "eslint",
     "oxlint",
-    "biome"
+    "biome",
+
+    -- tools
+    "dockerls",
 })
 
 -- ============ CONFIGURATIONS =================
@@ -52,6 +57,9 @@ vim.lsp.config("lua_ls", {
             diagnostics = {
                 globals = { "vim" },
             },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true)
+            }
         },
     },
 })

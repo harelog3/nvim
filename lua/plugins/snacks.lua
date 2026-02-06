@@ -15,7 +15,12 @@ return {
             -- explorer config
             sources = {
                 explorer = {
-                    layout = { layout = { position = "right" } },
+                    layout = {
+                        layout = {
+                            position = "right",
+                            width = 64
+                        }
+                    },
                     icons = {
                         tree = {
                             vertical = "  ",
@@ -63,8 +68,10 @@ return {
         },
 
 
-        scroll = { enabled = true },   -- scroll animation
-        dashboard = { enabled = true } -- starter dashboard
+        scroll = { enabled = true },    -- scroll animation
+        dashboard = { enabled = true }, -- starter dashboard
+        input = { enabled = true },
+        words = { enabled = true }
     },
     keys = {
 
