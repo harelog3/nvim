@@ -70,8 +70,10 @@ return {
 
         scroll = { enabled = true },    -- scroll animation
         dashboard = { enabled = true }, -- starter dashboard
-        input = { enabled = true },
-        words = { enabled = true }
+        input = { enabled = true },     -- better input
+        words = { enabled = true },     -- highlight lsp words
+        notifier = { enabled = true }   -- pretty notifier
+
     },
     keys = {
 

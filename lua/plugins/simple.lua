@@ -1,21 +1,12 @@
 -- simple plugins that don't require much configuration, centralized in a single file
 
 return {
-    -- autopairs
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    },
-
     -- autotag
     {
         'windwp/nvim-ts-autotag',
         opts = {}
     },
 
-    -- web dev icons
-    { "nvim-tree/nvim-web-devicons", opts = {} },
 
     -- git signs
     {
@@ -33,16 +24,12 @@ return {
     {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
-        opts = { -- set to setup table
+        opts = {
+            user_default_options = {
+                tailwind = "both",
+                tailwind_opts = { update_names = true }
+            }
         },
     },
 
-    -- todo comments
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-
-        }
-    }
 }

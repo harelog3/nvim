@@ -24,6 +24,11 @@ keymap.set("n", "<leader>k", "<C-w>k")  -- move to window above (up)
 keymap.set("n", "<leader>j", "<C-w>j")  -- move to window below (down)
 keymap.set("n", "<leader>l", "<C-w>l")  -- move to right window (right)
 
+keymap.set("n", "<leader>H", "<C-w><")  -- resize window left
+keymap.set("n", "<leader>K", "<C-w>+")  -- increase window height
+keymap.set("n", "<leader>J", "<C-w>-")  -- decrease window height
+keymap.set("n", "<leader>L", "<C-w>>")  -- resize window left
+
 keymap.set("n", "<leader>qw", "<C-w>q") -- remove current window
 
 -- buffer management (possibly in a future i move to tabs)

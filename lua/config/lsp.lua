@@ -38,6 +38,8 @@ vim.lsp.enable({
     "emmet_ls",
     "cssls",
     "jsonls",
+    "astro",
+    "yamlls",
 
     -- linters
     "eslint",
@@ -46,6 +48,8 @@ vim.lsp.enable({
 
     -- tools
     "dockerls",
+    "docker_compose_language_service",
+    "just"
 })
 
 -- ============ CONFIGURATIONS =================
@@ -82,6 +86,17 @@ vim.lsp.config("ts_ls", {
     },
 })
 
+-- astro configuration
+local ts_lsp_path = vim.fn.stdpath("data") ..
+    "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+vim.lsp.config("astro", {
+    init_options = {
+        typescript = {
+            tsdk = ts_lsp_path
+        }
+    }
+})
+
 -- eslint configuration
 vim.lsp.config("eslint", {
     cmd = { "vscode-eslint-language-server", "--stdio" },
@@ -116,7 +131,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "D", vim.diagnostic.open_float)
         map("n", "gd", vim.lsp.buf.definition)
         map("n", "gr", vim.lsp.buf.references)
-        map("n", "<leader>rn", vim.lsp.buf.rename)
         map("n", "<leader>ca", vim.lsp.buf.code_action)
+        map("n", "<leader>rn", vim.lsp.buf.rename)
     end
 })
