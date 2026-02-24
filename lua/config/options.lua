@@ -20,7 +20,7 @@ opt.smartcase = true
 
 opt.cursorline = true
 
-opt.background = "dark"
+-- opt.background = "light"
 opt.signcolumn = "yes"
 
 opt.winborder = "rounded"

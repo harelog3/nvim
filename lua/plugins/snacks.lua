@@ -51,29 +51,29 @@ return {
         },
 
         -- indentation
-        indent = {
-            indent = {
-                enabled = false,
-            },
-            chunk = {
-                enabled = true,
-                char = {
-                    horizontal = '─',
-                    vertical = '│',
-                    corner_top = '╭',
-                    corner_bottom = '╰',
-                    arrow = '─',
-                },
-            },
-        },
+        -- indent = {
+        --     indent = {
+        --         enabled = false,
+        --     },
+        --     chunk = {
+        --         enabled = true,
+        --         char = {
+        --             horizontal = '─',
+        --             vertical = '│',
+        --             corner_top = '╭',
+        --             corner_bottom = '╰',
+        --             arrow = '─',
+        --         },
+        --     },
+        -- },
 
 
         scroll = { enabled = true },    -- scroll animation
         dashboard = { enabled = true }, -- starter dashboard
         input = { enabled = true },     -- better input
         words = { enabled = true },     -- highlight lsp words
-        notifier = { enabled = true }   -- pretty notifier
-
+        notifier = { enabled = true },  -- pretty notifier
+        rename = { enabled = true }     -- Lsp file rename
     },
     keys = {
 

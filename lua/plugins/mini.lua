@@ -2,8 +2,25 @@ return {
     'nvim-mini/mini.nvim',
     version = '*',
     config = function()
-        require("mini.pairs").setup() -- autopairs
-        require("mini.icons").setup() -- icons
+        require("mini.pairs").setup()       -- autopairs
+        require("mini.icons").setup()       -- icons
+        require("mini.indentscope").setup() -- indentation scope
+
+        -- git diff and hunks
+        require("mini.diff").setup({
+            view = {
+                style = "sign",
+                signs = {
+                    add          = '┃',
+                    change       = '┃',
+                    delete       = '_',
+                    topdelete    = '‾',
+                    changedelete = '~',
+                    untracked    = '┆',
+                }
+            }
+        })
+
 
         -- surround
         require("mini.surround").setup({

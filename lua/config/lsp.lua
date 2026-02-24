@@ -40,6 +40,7 @@ vim.lsp.enable({
     "jsonls",
     "astro",
     "yamlls",
+    "zls",
 
     -- linters
     "eslint",
