@@ -14,7 +14,13 @@ return {
             },
             -- explorer config
             sources = {
+                grep = {
+                    hidden = false,
+                    ignored = true
+                },
                 explorer = {
+                    hiden = true,
+                    ignored = true,
                     layout = {
                         layout = {
                             position = "right",
@@ -103,6 +109,14 @@ return {
             function()
                 Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
             end,
+
+        },
+
+        {
+            "<leader>td",
+            function()
+                Snacks.picker.diagnostics()
+            end
         },
 
         -- explorer
@@ -113,5 +127,8 @@ return {
                 Snacks.explorer()
             end,
         },
+
+
+
     },
 }

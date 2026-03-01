@@ -1,15 +1,11 @@
 return {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
     config = function()
-        require("rose-pine").setup({
-            variant = "dawn",
-            styles = {
-                bold = true,
-                italic = true,
-                transparency = true,
-            },
-        })
-        vim.cmd("colorscheme rose-pine")
+        -- Optionally configure and load the colorscheme
+        -- directly inside the plugin declaration.
+        vim.g.everforest_enable_italic = true
+        vim.cmd.colorscheme('everforest')
     end
 }
