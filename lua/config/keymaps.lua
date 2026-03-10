@@ -34,7 +34,7 @@ keymap.set("n", "<leader>qw", "<C-w>q") -- remove current window
 -- buffer management (possibly in a future i move to tabs)
 -- keymap.set("n", "<Tab>", ":bnext<Return>", opts)
 -- keymap.set("n", "<S-Tab>", ":bprev<Return>", opts)
-keymap.set("n", "<leader>qb", ":bdelete<Return>", opts)
+-- keymap.set("n", "<leader>qb", ":bdelete<Return>", opts) -- Removed, handled by mini
 
 -- indentation
 keymap.set("v", "<", "<gv", opts)

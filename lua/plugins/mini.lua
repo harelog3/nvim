@@ -2,9 +2,8 @@ return {
     'nvim-mini/mini.nvim',
     version = '*',
     config = function()
-        require("mini.pairs").setup()       -- autopairs
-        require("mini.icons").setup()       -- icons
-        require("mini.indentscope").setup() -- indentation scope
+        require("mini.pairs").setup() -- autopairs
+        require("mini.icons").setup() -- icons
 
         -- git diff and hunks
         require("mini.diff").setup({
@@ -36,6 +35,13 @@ return {
                 suffix_next = 'n', -- Suffix to search with "next" method
             }
         })
+
+        -- buffer remove
+        require("mini.bufremove").setup({
+            config = { silent = true }
+        })
+        vim.keymap.set("n", "<leader>qb", MiniBufremove.delete)
+
 
         -- statusline
         require("mini.statusline").setup()

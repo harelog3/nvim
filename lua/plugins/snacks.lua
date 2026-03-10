@@ -57,21 +57,21 @@ return {
         },
 
         -- indentation
-        -- indent = {
-        --     indent = {
-        --         enabled = false,
-        --     },
-        --     chunk = {
-        --         enabled = true,
-        --         char = {
-        --             horizontal = '─',
-        --             vertical = '│',
-        --             corner_top = '╭',
-        --             corner_bottom = '╰',
-        --             arrow = '─',
-        --         },
-        --     },
-        -- },
+        indent = {
+            indent = {
+                enabled = false,
+            },
+            chunk = {
+                enabled = true,
+                char = {
+                    horizontal = '─',
+                    vertical = '│',
+                    corner_top = '╭',
+                    corner_bottom = '╰',
+                    arrow = '─',
+                },
+            },
+        },
 
 
         scroll = { enabled = true },    -- scroll animation

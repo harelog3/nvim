@@ -25,10 +25,17 @@ return {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
         opts = {
-            user_default_options = {
-                tailwind = "both",
-                tailwind_opts = { update_names = true }
-            }
+            options = {
+                parsers = {
+                    css = true,
+                    tailwind = { enable = true }
+                },
+                display = {
+                    mode = "virtualtext",
+                    virtualtext = { position = "before" },
+                }
+            },
+
         },
     },
 
