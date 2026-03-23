@@ -20,10 +20,19 @@ opt.smartcase = true
 
 opt.cursorline = true
 
-opt.background = "dark"
+-- opt.background = "light"
 opt.signcolumn = "yes"
 
 opt.winborder = "rounded"
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+opt.formatoptions:append({ "r" })
+
+-- Autocompletion and suggestions for cmdline
+opt.wildmenu = true
+opt.wildmode = "full"
+opt.wildoptions = "pum,fuzzy"
+opt.wildignorecase = true
+
+-- cmdline height
+opt.cmdheight = 0
