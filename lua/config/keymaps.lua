@@ -19,17 +19,17 @@ keymap.set("n", "<leader>w", vim.cmd.write)
 keymap.set("n", "<leader>|", ":vsplit<Return>", opts)
 keymap.set("n", "<leader>-", ":split<Return>", opts)
 
-keymap.set("n", "<leader>h", "<C-w>h")  -- move to left window (left)
-keymap.set("n", "<leader>k", "<C-w>k")  -- move to window above (up)
-keymap.set("n", "<leader>j", "<C-w>j")  -- move to window below (down)
-keymap.set("n", "<leader>l", "<C-w>l")  -- move to right window (right)
+keymap.set("n", "<leader>h", "<C-w>h")                        -- move to left window (left)
+keymap.set("n", "<leader>k", "<C-w>k")                        -- move to window above (up)
+keymap.set("n", "<leader>j", "<C-w>j")                        -- move to window below (down)
+keymap.set("n", "<leader>l", "<C-w>l")                        -- move to right window (right)
 
-keymap.set("n", "<leader>H", "<C-w><")  -- resize window left
-keymap.set("n", "<leader>K", "<C-w>+")  -- increase window height
-keymap.set("n", "<leader>J", "<C-w>-")  -- decrease window height
-keymap.set("n", "<leader>L", "<C-w>>")  -- resize window left
+keymap.set("n", "<S-Up>", ":resize +2<CR>", opts)             -- resize window left
+keymap.set("n", "<S-Down>", ":resize -2<CR>", opts)           -- increase window height
+keymap.set("n", "<S-Left>", ":vertical resize +2<CR>", opts)  -- decrease window height
+keymap.set("n", "<S-Right>", ":vertical resize -2<CR>", opts) -- resize window left
 
-keymap.set("n", "<leader>qw", "<C-w>q") -- remove current window
+keymap.set("n", "<leader>qw", "<C-w>q")                       -- remove current window
 
 -- buffer management (possibly in a future i move to tabs)
 -- keymap.set("n", "<Tab>", ":bnext<Return>", opts)

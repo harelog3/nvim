@@ -50,7 +50,10 @@ vim.lsp.enable({
     -- tools
     "dockerls",
     "docker_compose_language_service",
-    "just"
+    "just",
+
+    -- formatters
+    "oxfmt"
 })
 
 -- ============ CONFIGURATIONS =================
