@@ -41,6 +41,7 @@ vim.lsp.enable({
     "astro",
     "yamlls",
     "zls",
+    "prismals",
 
     -- linters
     "eslint",
