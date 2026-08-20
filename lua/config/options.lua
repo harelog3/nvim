@@ -36,3 +36,7 @@ opt.wildignorecase = true
 
 -- cmdline height
 opt.cmdheight = 0
+
+-- View changes live even when source is outside Neovim
+opt.autoread = true
+
