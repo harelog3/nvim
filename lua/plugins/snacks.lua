@@ -3,6 +3,11 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+        -- image
+        image = {
+            enabled = true
+        },
+
         -- picker
         picker = {
             win = {

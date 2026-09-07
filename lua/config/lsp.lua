@@ -2,10 +2,10 @@
 local lsps = {
     -- languages
     "lua_ls",
-    "ts_ls",
+    "vtsls",
+    "vue_ls",
     "pylsp",
     "svelte",
-    "vue_ls",
     "gopls",
     "clangd",
     "html",
@@ -17,6 +17,7 @@ local lsps = {
     "yamlls",
     "zls",
     "prismals",
+    "angularls",
 
     -- linters
     "eslint",
@@ -49,10 +50,12 @@ vim.diagnostic.config({
     update_in_insert = true,
 })
 
+
 -- global configuration for lsps
 vim.lsp.config("*", {
     root_markers = { { "package.json", "tsconfig.json", "jsconfig.json" }, ".git" },
 })
+
 
 -- lua lsp configurations
 vim.lsp.config("lua_ls", {
@@ -68,6 +71,89 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+
+-- Typescript lsp configs
+local vue_language_server_path = vim.fn.stdpath("data")
+    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+local vue_plugin = {
+    name = "@vue/typescript-plugin",
+    location = vue_language_server_path,
+    languages = { "vue" },
+    configNamespace = "typescript",
+}
+
+vim.lsp.config("vtsls", {
+    filetypes = {
+        "typescript",
+        "javascript",
+        "javascriptreact",
+        "typescriptreact",
+        "vue",
+    },
+
+    settings = {
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    vue_plugin,
+                },
+            },
+        },
+    },
+})
+
+-- astro config
+vim.lsp.config("astro", {
+    before_init = function(_, config)
+        -- ...
+        local npm_root = vim.fn.systemlist("npm root -g")
+        -- ...
+    end,
+})
+
+-- eslint configuration
+vim.lsp.config("eslint", {
+    cmd = { "vscode-eslint-language-server", "--stdio" },
+    root_markers = {
+        "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs",
+        ".eslintrc", ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml",
+    },
+})
+
+-- biome configuration
+vim.lsp.config("biome", {
+    cmd = { "biome", "lsp-proxy" },
+    root_markers = { "biome.json", "biome.jsonc" },
+})
+
+-- oxlint config
+vim.lsp.config("oxlint", {
+    cmd = { "oxlint", "--lsp" },
+    root_markers = { ".oxlintrc.json" },
+})
+
+-- html config
+vim.lsp.config("html", {
+    filetypes = { "html", "htmlangular", "templ" },
+})
+
+-- when the lsp is attached to buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local bufnr = args.buf
+        local map = function(mode, key, rhs)
+            vim.keymap.set(mode, key, rhs, { buffer = bufnr })
+        end
+
+        map("n", "K", vim.lsp.buf.hover)
+        map("n", "D", vim.diagnostic.open_float)
+        map("n", "gd", vim.lsp.buf.definition)
+        map("n", "gr", vim.lsp.buf.references)
+        map("n", "<leader>ca", vim.lsp.buf.code_action)
+        map("n", "<leader>rn", vim.lsp.buf.rename)
+    end
+})
 
 -- enable lsp
 vim.lsp.enable(lsps)
