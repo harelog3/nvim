@@ -16,8 +16,9 @@ local lsps = {
     "astro",
     "yamlls",
     "zls",
-    "prismals",
+    -- "prismals",
     "angularls",
+    "prisma_next",
 
     -- linters
     "eslint",
@@ -68,6 +69,17 @@ vim.lsp.config("lua_ls", {
                 library = vim.api.nvim_get_runtime_file("", true)
             }
         },
+    },
+})
+
+-- setup prisma config
+vim.lsp.config("prisma_next", {
+    cmd = { "bunx", "prisma", "lsp" },
+    filetypes = { "prisma" },
+    root_markers = {
+        "prisma.config.ts",
+        "package.json",
+        ".git",
     },
 })
 
@@ -136,6 +148,26 @@ vim.lsp.config("oxlint", {
 -- html config
 vim.lsp.config("html", {
     filetypes = { "html", "htmlangular", "templ" },
+})
+
+-- tailwindcss config
+vim.lsp.config("tailwindcss", {
+    settings = {
+        tailwindCSS = {
+            classAttributes = {
+                "class",
+                "className",
+                "class:list",
+                "classList",
+                "ngClass",
+                "ui",
+            },
+
+            classFunctions = {
+                "defineAppConfig",
+            },
+        }
+    }
 })
 
 -- when the lsp is attached to buffer
