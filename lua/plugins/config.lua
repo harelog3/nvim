@@ -35,10 +35,10 @@ vim.pack.add({
 -- Setup configs
 require("mason").setup()
 require("nvim-ts-autotag").setup()
-require("incline").setup()
 require("plugins.colorscheme")
 require("plugins.treesitter")
 require("plugins.minirc")
 require("plugins.snacksrc")
 require("plugins.cmp")
 require("plugins.format")
+require("plugins.inclinerc")
