@@ -40,5 +40,7 @@ opt.cmdheight = 0
 -- View changes live even when source is outside Neovim
 opt.autoread = true
 
+opt.laststatus = 3
+
 -- undercurl
 vim.api.nvim_set_hl(0, "DiagnosticError", { undercurl = true })
