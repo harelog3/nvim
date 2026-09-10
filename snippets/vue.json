@@ -1,0 +1,33 @@
+{
+    "Vue TypeScript Component": {
+        "prefix": "vtc",
+        "body": [
+            "<script lang=\"ts\" setup>",
+            "",
+            "</script>",
+            "",
+            "<template>",
+            "  $0",
+            "</template>"
+        ],
+        "description": "Vue component with TypeScript setup script"
+    },
+
+    "Vue TypeScript Component Scoped Style": {
+        "prefix": "vtcs",
+        "body": [
+            "<script lang=\"ts\" setup>",
+            "",
+            "</script>",
+            "",
+            "<template>",
+            "  $0",
+            "</template>",
+            "",
+            "<style scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "Vue component with TypeScript setup script and scoped styles"
+    }
+}
