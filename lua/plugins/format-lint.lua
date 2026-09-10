@@ -1,6 +1,6 @@
 -- File for conform for formatting and nvim-lint for linter
 
-local web_projects_options = { "biome", "prettierd", "oxfmt", "prettier", stop_after_first = true }
+local web_projects_options = { "biome", "oxfmt", "prettierd", "prettier", stop_after_first = true }
 
 return {
     {
@@ -9,7 +9,10 @@ return {
             formatters = {
                 biome = {
                     require_cwd = true
-                }
+                },
+                oxfmt = {
+                    require_cwd = true,
+                },
             },
             formatters_by_ft = {
                 lua = { "stylua" },
@@ -19,6 +22,7 @@ return {
                 typescriptreact = web_projects_options,
                 vue = web_projects_options,
                 svelte = web_projects_options,
+                htmlangular = web_projects_options,
                 astro = { "prettier" },
                 c_sharp = { "csharpier" },
             },

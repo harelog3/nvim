@@ -1,3 +1,39 @@
+-- lsps to enable
+local lsps = {
+    -- languages
+    "lua_ls",
+    "vtsls",
+    "vue_ls",
+    "pylsp",
+    "svelte",
+    "gopls",
+    "clangd",
+    "html",
+    "tailwindcss",
+    "emmet_ls",
+    "cssls",
+    "jsonls",
+    "astro",
+    "yamlls",
+    "zls",
+    -- "prismals",
+    "angularls",
+    "prisma_next",
+
+    -- linters
+    "eslint",
+    "oxlint",
+    "biome",
+
+    -- tools
+    "dockerls",
+    "docker_compose_language_service",
+    "just",
+
+    -- formatters
+    "oxfmt"
+}
+
 -- diagnostics config
 vim.diagnostic.config({
     signs = {
@@ -16,48 +52,11 @@ vim.diagnostic.config({
 })
 
 
-
 -- global configuration for lsps
 vim.lsp.config("*", {
-    capabilities = require("blink.cmp").get_lsp_capabilities(),
     root_markers = { { "package.json", "tsconfig.json", "jsconfig.json" }, ".git" },
 })
 
--- enable lsps
-vim.lsp.enable({
-    -- languages
-    "lua_ls",
-    "ts_ls",
-    "pylsp",
-    "svelte",
-    "vue_ls",
-    "gopls",
-    "clangd",
-    "html",
-    "tailwindcss",
-    "emmet_ls",
-    "cssls",
-    "jsonls",
-    "astro",
-    "yamlls",
-    "zls",
-    "prismals",
-
-    -- linters
-    "eslint",
-    "oxlint",
-    "biome",
-
-    -- tools
-    "dockerls",
-    "docker_compose_language_service",
-    "just",
-
-    -- formatters
-    "oxfmt"
-})
-
--- ============ CONFIGURATIONS =================
 
 -- lua lsp configurations
 vim.lsp.config("lua_ls", {
@@ -73,7 +72,19 @@ vim.lsp.config("lua_ls", {
     },
 })
 
--- setup for vue files
+-- setup prisma config
+vim.lsp.config("prisma_next", {
+    cmd = { "bunx", "prisma", "lsp" },
+    filetypes = { "prisma" },
+    root_markers = {
+        "prisma.config.ts",
+        "package.json",
+        ".git",
+    },
+})
+
+
+-- Typescript lsp configs
 local vue_language_server_path = vim.fn.stdpath("data")
     .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
@@ -84,22 +95,33 @@ local vue_plugin = {
     configNamespace = "typescript",
 }
 
-vim.lsp.config("ts_ls", {
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    init_options = {
-        plugins = { vue_plugin },
+vim.lsp.config("vtsls", {
+    filetypes = {
+        "typescript",
+        "javascript",
+        "javascriptreact",
+        "typescriptreact",
+        "vue",
+    },
+
+    settings = {
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    vue_plugin,
+                },
+            },
+        },
     },
 })
 
--- astro configuration
-local ts_lsp_path = vim.fn.stdpath("data") ..
-    "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+-- astro config
 vim.lsp.config("astro", {
-    init_options = {
-        typescript = {
-            tsdk = ts_lsp_path
-        }
-    }
+    before_init = function(_, config)
+        -- ...
+        local npm_root = vim.fn.systemlist("npm root -g")
+        -- ...
+    end,
 })
 
 -- eslint configuration
@@ -123,6 +145,30 @@ vim.lsp.config("oxlint", {
     root_markers = { ".oxlintrc.json" },
 })
 
+-- html config
+vim.lsp.config("html", {
+    filetypes = { "html", "htmlangular", "templ" },
+})
+
+-- tailwindcss config
+vim.lsp.config("tailwindcss", {
+    settings = {
+        tailwindCSS = {
+            classAttributes = {
+                "class",
+                "className",
+                "class:list",
+                "classList",
+                "ngClass",
+                "ui",
+            },
+
+            classFunctions = {
+                "defineAppConfig",
+            },
+        }
+    }
+})
 
 -- when the lsp is attached to buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -140,3 +186,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "<leader>rn", vim.lsp.buf.rename)
     end
 })
+
+-- enable lsp
+vim.lsp.enable(lsps)
