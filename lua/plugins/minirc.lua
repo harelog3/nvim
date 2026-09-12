@@ -37,6 +37,11 @@ require("mini.bufremove").setup({
 vim.keymap.set("n", "<leader>qb", MiniBufremove.delete)
 
 -- statusline
+vim.api.nvim_set_hl(0, "MiniStatuslineFill", {
+	-- bg = "NONE",
+	link = "Normal",
+})
+
 local statusline = require("mini.statusline")
 statusline.setup({
 	content = {
@@ -78,6 +83,11 @@ statusline.setup({
 						diff,
 						diagnostics,
 					},
+				},
+
+				{
+					hl = "MiniStatuslineFill",
+					strings = {},
 				},
 
 				"%=",

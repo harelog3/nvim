@@ -17,6 +17,7 @@ local lsps = {
 	"yamlls",
 	"zls",
 	-- "prismals",
+	"roslyn_ls",
 	"angularls",
 	"prisma_next",
 
@@ -118,6 +119,29 @@ vim.lsp.config("astro", {
 		-- ...
 		local npm_root = vim.fn.systemlist("npm root -g")
 		-- ...
+	end,
+})
+
+-- roslyn C#
+vim.lsp.config("roslyn_ls", {
+	-- allow for single cs files to activate roslyn lsp
+	root_dir = function(bufnr, on_dir)
+		local root = vim.fs.root(bufnr, function(name)
+			return name:match("%.sln[x]?$") ~= nil
+		end)
+
+		if not root then
+			root = vim.fs.root(bufnr, function(name)
+				return name:match("%.csproj$") ~= nil
+			end)
+		end
+
+		if not root then
+			local file = vim.api.nvim_buf_get_name(bufnr)
+			root = vim.fs.dirname(file)
+		end
+
+		on_dir(root)
 	end,
 })
 
