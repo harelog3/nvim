@@ -44,3 +44,10 @@ opt.laststatus = 3
 
 -- undercurl
 vim.api.nvim_set_hl(0, "DiagnosticError", { undercurl = true })
+
+-- folding
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldcolumn = "1"
