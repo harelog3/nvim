@@ -18,3 +18,5 @@ require("catppuccin").setup({
 		operators = {},
 	},
 })
+
+vim.cmd([[colorscheme catppuccin-nvim]])

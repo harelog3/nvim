@@ -15,6 +15,7 @@ vim.pack.add({
 
 	-- Colorscheme
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+	-- { src = "https://github.com/neanias/everforest-nvim" },
 
 	-- LSP
 	{ src = "https://github.com/neovim/nvim-lspconfig" }, -- Basic lsp configurations

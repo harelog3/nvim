@@ -16,6 +16,7 @@ local lsps = {
 	"astro",
 	"yamlls",
 	"zls",
+	"rust_analyzer",
 	-- "prismals",
 	"roslyn_ls",
 	"angularls",
@@ -30,6 +31,8 @@ local lsps = {
 	"dockerls",
 	"docker_compose_language_service",
 	"just",
+	"bashls",
+	"fish_lsp",
 
 	-- formatters
 	"oxfmt",

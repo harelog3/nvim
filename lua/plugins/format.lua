@@ -19,6 +19,7 @@ require("conform").setup({
 		htmlangular = web_projects_options,
 		astro = { "prettier" },
 		c_sharp = { "csharpier" },
+		go = { "goimports", "gofmt" },
 	},
 
 	format_on_save = {
