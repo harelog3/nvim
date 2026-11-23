@@ -1,3 +1,13 @@
+# macOS
 .DS_Store
 
-nvim-pack-lock.json
+# logs / generated
+*.log
+tags
+spell/*.spl
+doc/tags
+
+# local, per-machine overrides
+.luarc.json
+.nvim.lua
+lua/local.lua
