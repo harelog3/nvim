@@ -3,14 +3,14 @@
 
 local vscode = require("vscode")
 
-vim.g.mapleader = " "
+-- leader is set in init.lua
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- shared, editor-agnostic config (clipboard maps, <leader>w, visual indent, yank highlight)
-require("keymaps")
-require("autocmds")
+require("core.keymaps")
+require("core.autocmds")
 
 -- surround, same mappings as in plugins/minirc.lua
 pcall(vim.cmd.packadd, "mini.nvim")

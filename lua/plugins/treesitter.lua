@@ -1,66 +1,68 @@
-local ts = require("nvim-treesitter")
-
-local must_parsers = {
+local parsers = {
 	-- core
 	"lua",
 	"vim",
 	"vimdoc",
 	"query",
+	"regex",
+	"luadoc",
 
-	-- web technologies
+	-- web
 	"html",
 	"css",
+	"scss",
 	"javascript",
 	"typescript",
 	"tsx",
-	"jsx",
+	"jsdoc",
 	"angular",
 	"vue",
 	"svelte",
 	"astro",
-	"angular",
+	"graphql",
 
-	-- backend and infra langs
+	-- backend / systems
 	"go",
+	"gomod",
+	"gosum",
+	"gowork",
+	"c_sharp",
 	"python",
 	"rust",
 	"c",
-	"c_sharp",
+	"zig",
 
-	-- markup and data
+	-- data / db
+	"sql",
+	"prisma",
+	"json",
 	"yaml",
+	"toml",
+	"xml",
+
+	-- docs / git / tooling
 	"markdown",
 	"markdown_inline",
-	"toml",
-	"json",
-
-	-- tooling
 	"bash",
 	"fish",
 	"dockerfile",
-	"gitignore",
-	"diff",
 	"make",
+	"just",
 	"http",
 	"hurl",
+	"gitignore",
+	"gitcommit",
+	"git_rebase",
+	"git_config",
+	"diff",
 }
 
-ts.install(must_parsers)
+require("nvim-treesitter").install(parsers)
+require("nvim-ts-autotag").setup()
 
--- Ensures treesitter parsers updated on plugin updates
-vim.api.nvim_create_autocmd("User", {
-	pattern = "PackChanged",
-	callback = function(ev)
-		-- Check if nvim-treesitter was one of the packages updated
-		if ev.data and ev.data.spec and ev.data.spec.name == "nvim-treesitter" then
-			-- Automatically run :TSUpdate
-			vim.cmd("TSUpdate")
-		end
-	end,
-})
-
--- spawn treesitter
+-- start treesitter highlighting for any filetype with a parser
 vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("ts_start", { clear = true }),
 	callback = function(args)
 		pcall(vim.treesitter.start, args.buf)
 	end,
