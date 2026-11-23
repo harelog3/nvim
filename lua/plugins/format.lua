@@ -1,4 +1,4 @@
-local web_projects_options = { "biome", "oxfmt", "prettierd", "prettier", stop_after_first = true }
+local web_projects_options = { "oxfmt", "biome", "prettierd", "prettier", stop_after_first = true }
 require("conform").setup({
 	formatters = {
 		biome = {
@@ -17,7 +17,7 @@ require("conform").setup({
 		vue = web_projects_options,
 		svelte = web_projects_options,
 		htmlangular = web_projects_options,
-		astro = { "prettier" },
+		astro = web_projects_options,
 		c_sharp = { "csharpier" },
 		go = { "goimports", "gofmt" },
 	},

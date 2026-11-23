@@ -31,6 +31,10 @@ vim.pack.add({
 
 	-- Floating status line
 	{ src = "https://github.com/b0o/incline.nvim" },
+
+	{ src = "https://github.com/tpope/vim-dadbod" },
+	{ src = "https://github.com/kristijanhusak/vim-dadbod-completion" },
+	-- { src ="https://github.com/kristijanhusak/vim-dadbod-ui"},
 })
 
 -- Setup configs

@@ -42,5 +42,7 @@ opt.autoread = true
 
 opt.laststatus = 3
 
+opt.exrc = true
+
 -- undercurl
 vim.api.nvim_set_hl(0, "DiagnosticError", { undercurl = true })

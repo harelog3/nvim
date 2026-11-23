@@ -39,6 +39,13 @@ cmp.setup({
 			"snippets",
 			"buffer",
 		},
+
+		per_filetype = {
+			sql = { "snippets", "dadbod", "buffer" },
+		},
+		providers = {
+			dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink", inherit_defaults = true, "dadbod" },
+		},
 	},
 
 	fuzzy = {

@@ -18,6 +18,7 @@ local lsps = {
 	"zls",
 	"rust_analyzer",
 	-- "prismals",
+	"sqls",
 	"roslyn_ls",
 	"angularls",
 	"prisma_next",
@@ -117,11 +118,36 @@ vim.lsp.config("vtsls", {
 })
 
 -- astro config
+
+-- astro config
+local function get_tsdk(root_dir)
+	if root_dir then
+		local local_tsdk = root_dir .. "/node_modules/typescript/lib"
+		if vim.uv.fs_stat(local_tsdk) then
+			return local_tsdk
+		end
+	end
+
+	local mason_tsdk = vim.fn.stdpath("data")
+		.. "/mason/packages/vtsls/node_modules/@vtsls/language-server/node_modules/typescript/lib"
+	if vim.uv.fs_stat(mason_tsdk) then
+		return mason_tsdk
+	end
+
+	local npm_root = vim.fn.systemlist("npm root -g")[1]
+	if npm_root and vim.v.shell_error == 0 then
+		local global_tsdk = npm_root .. "/typescript/lib"
+		if vim.uv.fs_stat(global_tsdk) then
+			return global_tsdk
+		end
+	end
+end
+
 vim.lsp.config("astro", {
 	before_init = function(_, config)
-		-- ...
-		local npm_root = vim.fn.systemlist("npm root -g")
-		-- ...
+		config.init_options = config.init_options or {}
+		config.init_options.typescript = config.init_options.typescript or {}
+		config.init_options.typescript.tsdk = get_tsdk(config.root_dir)
 	end,
 })
 
