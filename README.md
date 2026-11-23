@@ -2,7 +2,7 @@
 
 A small Neovim setup built on the native plugin manager (`vim.pack`). It targets TypeScript/Node, Go, Svelte/Solid, C# and SQL (SQLite first).
 
-Theme: **Monokai Pro Light (Filter Sun)**, with a custom statusline (no plugin) and Monokai-style icons.
+Theme: **Everforest** (medium). It switches between light and dark with the macOS appearance, checked at startup and whenever Neovim regains focus, so it also works inside tmux. The statusline is custom and uses no plugin.
 
 ## Requirements
 
@@ -77,7 +77,7 @@ Leader is `<Space>`. Press `<leader>` and wait to see hints (mini.clue).
 | `<leader>tc` | config files |
 | `<leader>t.` | resume last picker |
 
-**Files (oil)**: there is no sidebar. `-` opens the current file's directory as a buffer. Edit it like text, then `:w`: add a line to create a file (end it with `/` for a directory), change a name to rename, `dd` to delete (it goes to the trash), and cut/paste between oil buffers to move. `<CR>` opens, `-` goes up, `gp` previews, `g.` toggles hidden files, `q` closes. `<leader>e` opens oil in a float.
+**Files (mini.files)**: there is no sidebar. `-` opens the current file's directory in columns; `<leader>pv` opens the project root. `l`/`<CR>` goes in or opens a file, and `h` goes up. Edit the listing like text: add a line to create a file (end it with `/` for a directory), change a name to rename, `dd` to delete (it goes to the trash), or cut a line and paste it in another directory to move it. Press `=` to apply the changes and `q` to close. `g.` toggles hidden files, and `<C-s>`/`<C-x>` open the file in a vertical/horizontal split.
 
 **LSP**
 

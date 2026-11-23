@@ -1,40 +1,8 @@
-local c = _G.MonokaiSun
-
 ---------------------------------------------------------------------------
--- Icons: Monokai Pro icon style — simple glyphs, palette colors (not brand colors)
+-- Icons (mini.icons defaults, also used by pickers, mini.files and blink)
 ---------------------------------------------------------------------------
-require("mini.icons").setup({
-	default = {
-		directory = { glyph = "" },
-		file = { glyph = "󰈔", hl = "MiniIconsGrey" },
-	},
-	directory = {
-		[".git"] = { glyph = "", hl = "MiniIconsGrey" },
-		["node_modules"] = { glyph = "", hl = "MiniIconsGrey" },
-	},
-})
+require("mini.icons").setup()
 MiniIcons.mock_nvim_web_devicons()
-
-local function icon_hls()
-	local map = {
-		MiniIconsAzure = c.accent5,
-		MiniIconsBlue = c.accent5,
-		MiniIconsCyan = c.accent5,
-		MiniIconsGreen = c.accent4,
-		MiniIconsGrey = c.dimmed2,
-		MiniIconsOrange = c.accent2,
-		MiniIconsPurple = c.accent6,
-		MiniIconsRed = c.accent1,
-		MiniIconsYellow = c.accent3,
-	}
-	for group, fg in pairs(map) do
-		vim.api.nvim_set_hl(0, group, { fg = fg })
-	end
-	-- folders are quiet, like in Monokai Pro icons
-	vim.api.nvim_set_hl(0, "Directory", { fg = c.text })
-end
-icon_hls()
-vim.api.nvim_create_autocmd("ColorScheme", { callback = icon_hls })
 
 ---------------------------------------------------------------------------
 -- Floating filename per window (top right)
@@ -56,8 +24,8 @@ require("incline").setup({
 			" ",
 			{ icon, group = icon_hl },
 			" ",
-			{ filename, gui = props.focused and "bold" or nil, guifg = props.focused and c.text or c.dimmed2 },
-			vim.bo[props.buf].modified and { " ●", guifg = c.accent2 } or "",
+			{ filename, gui = props.focused and "bold" or nil, group = props.focused and "Normal" or "Comment" },
+			vim.bo[props.buf].modified and { " ●", group = "DiagnosticWarn" } or "",
 			" ",
 		}
 	end,
@@ -101,7 +69,7 @@ Snacks.setup({
 				{ icon = " ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
 				{ icon = " ", key = "g", desc = "Grep", action = ":lua Snacks.picker.grep()" },
 				{ icon = " ", key = "r", desc = "Recent", action = ":lua Snacks.picker.recent()" },
-				{ icon = " ", key = "-", desc = "Browse dir", action = ":Oil" },
+				{ icon = " ", key = "-", desc = "Browse dir", action = ":lua MiniFiles.open()" },
 				{
 					icon = " ",
 					key = "c",

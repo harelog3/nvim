@@ -19,7 +19,7 @@ require("blink.cmp").setup({
 			draw = {
 				columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
 				components = {
-					-- reuse mini.icons (Monokai-style colors) for kinds and paths
+					-- reuse mini.icons for completion kinds
 					kind_icon = {
 						text = function(ctx)
 							local icon = MiniIcons.get("lsp", ctx.kind)

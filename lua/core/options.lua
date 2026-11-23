@@ -8,7 +8,6 @@ opt.cursorline = true
 
 -- colors
 opt.termguicolors = true
-opt.background = "light"
 
 -- tabs and spaces
 opt.tabstop = 4

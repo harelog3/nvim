@@ -1,61 +1,59 @@
--- Monokai Pro Light (Filter Sun) — same theme as VS Code.
--- monokai-pro.nvim ships the plain "light" filter; we swap in the Filter Sun palette.
+-- Everforest (medium). Light or dark follows the macOS appearance, also inside tmux.
 
-local sun = {
-	dark2 = "#d3cbc4",
-	dark1 = "#ede5de",
-	background = "#f8efe7",
-	text = "#2c232e",
-	accent1 = "#ce4770", -- red
-	accent2 = "#d4572b", -- orange
-	accent3 = "#b16803", -- yellow
-	accent4 = "#218871", -- green
-	accent5 = "#2473b6", -- blue
-	accent6 = "#6851a2", -- purple
-	dimmed1 = "#72696d",
-	dimmed2 = "#92898a",
-	dimmed3 = "#a59c9c",
-	dimmed4 = "#beb5b3",
-	dimmed5 = "#d3cbc4",
-}
-
--- shared with icons / statusline / incline
-_G.MonokaiSun = sun
-
-require("monokai-pro").setup({
-	filter = "light",
-	transparent_background = true,
-	terminal_colors = true,
-	-- clean look: only comments italic
-	styles = {
-		comment = { italic = true },
-		keyword = {},
-		type = {},
-		storageclass = {},
-		structure = {},
-		parameter = {},
-		annotation = {},
-		tag_attribute = {},
-	},
-	inc_search = "background",
-	override_palette = function(filter)
-		if filter == "light" then
-			return sun
-		end
-	end,
-	override = function()
-		return {
-			-- thin, quiet floats and separators
-			NormalFloat = { bg = "NONE" },
-			FloatBorder = { fg = sun.dimmed4, bg = "NONE" },
-			WinSeparator = { fg = sun.dimmed5 },
-			CursorLine = { bg = sun.dark1 },
-			CursorLineNr = { fg = sun.text, bold = true },
-			LineNr = { fg = sun.dimmed4 },
-			DiagnosticUnderlineError = { undercurl = true, sp = sun.accent1 },
-			DiagnosticUnderlineWarn = { undercurl = true, sp = sun.accent3 },
-		}
+require("everforest").setup({
+	background = "medium",
+	-- let Ghostty paint the background (same color, keeps its opacity/blur)
+	transparent_background_level = 1,
+	italics = false,
+	disable_italic_comments = false,
+	ui_contrast = "low",
+	float_style = "dim",
+	diagnostic_text_highlight = false,
+	diagnostic_virtual_text = "coloured",
+	on_highlights = function(hl, palette)
+		hl.FloatBorder = { fg = palette.grey0, bg = "NONE" }
+		hl.NormalFloat = { bg = "NONE" }
+		hl.WinSeparator = { fg = palette.bg3 }
 	end,
 })
 
-vim.cmd.colorscheme("monokai-pro-light")
+-- Ask macOS for the current appearance (works the same inside and outside tmux)
+local function system_background(cb)
+	if vim.fn.has("mac") == 0 then
+		return cb(nil)
+	end
+	vim.system({ "defaults", "read", "-g", "AppleInterfaceStyle" }, { text = true }, function(res)
+		cb((res.stdout or ""):match("Dark") and "dark" or "light")
+	end)
+end
+
+local function apply(bg)
+	if bg and vim.o.background ~= bg then
+		vim.o.background = bg
+	end
+	if vim.g.colors_name ~= "everforest" or bg then
+		vim.cmd.colorscheme("everforest")
+	end
+end
+
+-- startup: wait briefly for the answer so there is no flash of the wrong theme
+local done, startup_bg = false, nil
+system_background(function(bg)
+	startup_bg, done = bg, true
+end)
+vim.wait(300, function()
+	return done
+end, 10)
+apply(startup_bg)
+
+-- re-check whenever Neovim regains focus (e.g. after macOS switched at sunset)
+vim.api.nvim_create_autocmd("FocusGained", {
+	group = vim.api.nvim_create_augroup("auto_background", { clear = true }),
+	callback = function()
+		system_background(vim.schedule_wrap(function(bg)
+			if bg and bg ~= vim.o.background then
+				apply(bg)
+			end
+		end))
+	end,
+})

@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
 	-- colorscheme
-	gh("loctvl842/monokai-pro.nvim"),
+	gh("neanias/everforest-nvim"),
 
 	-- core libs / ui
 	{ src = gh("nvim-mini/mini.nvim"), version = "stable" },
@@ -31,9 +31,6 @@ vim.pack.add({
 	-- treesitter
 	gh("nvim-treesitter/nvim-treesitter"),
 	gh("windwp/nvim-ts-autotag"),
-
-	-- files
-	gh("stevearc/oil.nvim"),
 
 	-- git
 	gh("lewis6991/gitsigns.nvim"),
