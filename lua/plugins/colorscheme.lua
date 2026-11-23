@@ -11,8 +11,6 @@ require("everforest").setup({
 	diagnostic_text_highlight = false,
 	diagnostic_virtual_text = "coloured",
 	on_highlights = function(hl, palette)
-		hl.FloatBorder = { fg = palette.grey0, bg = "NONE" }
-		hl.NormalFloat = { bg = "NONE" }
 		hl.WinSeparator = { fg = palette.bg3 }
 	end,
 })
